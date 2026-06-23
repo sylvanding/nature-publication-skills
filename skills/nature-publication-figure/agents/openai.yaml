@@ -1,0 +1,6 @@
+interface:
+  display_name: "Nature Figure"
+  short_description: "Nature-family figure design and QA"
+  default_prompt: "Use $nature-publication-figure to read its atlas/toolchain/QA references before drawing or auditing; use real data unless mock-only is explicit, and keep all figure text in English."
+policy:
+  allow_implicit_invocation: true
