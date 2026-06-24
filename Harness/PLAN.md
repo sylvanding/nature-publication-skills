@@ -4,23 +4,32 @@ Use this file when work spans more than one step, one file, or one agent.
 
 ## Current Goal
 
-Configure `create-harness-vibe-coding` for the existing `nature-publication-skills` repository on branch `harness-vibe-coding-bootstrap`, preserving all current project files and merging only missing Harness conventions.
+WF mode: complete the eight-goal roadmap for `nature-publication-skills` in order:
+
+1. Harness bootstrap closeout audit.
+2. Nature figure skill v2 deepening.
+3. Paper evidence coverage re-audit.
+4. Nature-style chart/template library.
+5. Writing skill benchmark.
+6. Install and distribution polish.
+7. Nature submission QA skill.
+8. README and docs productization.
 
 ## Phase
 
 Choose one: Idea / Research / PRD / Architecture / Plan / Build / Verify / Feedback.
 
-Current: Verify
+Current: Plan
 
 ## Heartbeat
 
-Mode: normal
-Last beat: 2026-06-24T21:23:12+08:00
-Current phase: Verify
+Mode: wf
+Last beat: 2026-06-24T22:28:20+08:00
+Current phase: Plan
 Current blocker: none
-Next beat trigger: before git diff audit and commit
+Next beat trigger: after Goal 1 commit and before Goal 2 feature packet
 Failure count: 0
-Recovery action: rerun the Harness validator, inspect the failing file, and patch only the reported project fact document
+Recovery action: narrow to the next unfinished roadmap slice, rerun the relevant validator, and dispatch debugger only for reproduced failures
 
 Update this section before long commands, after long commands, before and after subagent handoffs, after failed verification, and before stopping for user input. In `wf-mode`, use this as the resume point after context loss or interruption.
 
@@ -40,83 +49,95 @@ Allowed task statuses: Pending / In Progress / Blocked / Done / Verified.
 
 ## Success Criteria
 
-- [x] Agent-link pre-install questions were asked and the user approved existing-project dry-run, conflict skipping, and generic Harness installation.
-- [x] Existing project bootstrap used a dry-run first, then `--on-conflict skip`; the existing `README.md` conflict was preserved.
-- [x] Harness project fact files describe the real skill repository instead of generic app placeholders.
-- [x] `node Harness/scripts/validate-harness.mjs --strict` passes.
-- [x] Existing repository validation commands still pass or any skipped heavyweight checks are explicitly recorded.
-- [ ] Git commit records the Harness configuration branch state.
+- [x] Goal 1: Harness bootstrap closeout audit proves branch, commit, push, `Harness/PLAN.md`, and `Harness/SETUP.md` disposition are consistent.
+- [ ] Goal 2: Figure skill v2 adds source-backed, executable guidance for colors, panel layouts, microscopy plates, statistical plots, workflows, icon/schematic styles, and export QA without bloating `SKILL.md`.
+- [ ] Goal 3: Evidence coverage maps every local main, Extended Data, Supplementary figure/table family to skill rules and sources.
+- [ ] Goal 4: Template library provides runnable Nature-style figure examples or scripts with English labels and deterministic validation.
+- [ ] Goal 5: Writing benchmark provides prompts, expected checks, and a runner or manual rubric for title, abstract, results, legends, methods, and discussion.
+- [ ] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
+- [ ] Goal 7: Submission QA skill exists or the existing skills gain a clearly routed QA workflow covering figure legends, statistics, image integrity, reporting, data/code availability, and supplementary consistency.
+- [ ] Goal 8: README/docs are productized while preserving current project facts and validation commands.
+- [ ] All new claims have local or web source evidence recorded in `references/**`, skill references, or `Harness/research/research-results.md`.
+- [ ] Final validators pass: `node Harness/scripts/validate-harness.mjs --strict`, `python scripts/validate_skills.py`, `python scripts/check_style_coverage.py`, benchmark/template validators, install smoke checks, PDF audit checks when local corpus is present, `npm pack --dry-run`, and `git diff --check`.
 
 ## Scope
 
-Allowed write set:
+Allowed write set for the full roadmap:
 
-- `AGENTS.md`
-- `CLAUDE.md`
-- `.claude/**`
 - `Harness/**`
-- `tests/.gitkeep`
+- `.claude/**` only if routing or workflow docs need updates
+- `docs/**`
+- `references/**`
+- `skills/**`
+- `scripts/**`
+- `tests/**`
+- `README.md`
+- `package.json`
+- `requirements.txt`
+- `.github/**` if CI is added after plan review
+- `.codex-plugin/**` if a new skill is added and plugin metadata must stay aligned
 
 Forbidden without explicit approval:
 
-- Existing `README.md`
-- `package.json`
-- `bin/**`
-- `scripts/**`
-- `skills/**`
-- `references/**`
-- `docs/installation.md`
-- `.codex-plugin/**`
-- `.agents/**`
 - `references-papers-dai-tsinghua/**`
-- Generated `.audit/**`
+- `.audit/**` tracked commits
+- destructive git operations
+- rewriting existing skill source without preserving source-backed references
+- inventing scientific claims, sample counts, statistics, or figure evidence not present in sources
 
 ## Loaded Context
 
 Keep this list short. Add only docs/files used for the current phase.
 
-- `https://github.com/zingspark/create-harness-vibe-coding`
 - `AGENTS.md`
 - `CLAUDE.md`
-- `Harness/SETUP.md`
 - `Harness/MEMORY.md`
 - `Harness/README.md`
-- `Harness/lifecycle.md`
-- `Harness/research/README.md`
-- `Harness/extension.md`
+- `Harness/WF.md`
+- `Harness/subagents.md`
+- `Harness/dispatch.md`
+- `Harness/context-loading.md`
+- `Harness/architecture.md`
+- `Harness/domain/ports.md`
 - `README.md`
 - `docs/installation.md`
-- `package.json`
-- `.codex-plugin/plugin.json`
-- `.gitignore`
-- `scripts/install_skills.py`
-- `scripts/validate_skills.py`
-- `bin/nature-publication-skills.mjs`
+- `skills/nature-publication-figure/SKILL.md`
+- `skills/nature-publication-figure/references/*`
+- `skills/nature-publication-writing/SKILL.md`
+- `skills/nature-publication-writing/references/*`
+- `references/source-paper-index.md`
+- `references/figure-audit-register.md`
 - `references/external-sources.md`
+- `scripts/validate_skills.py`
+- `scripts/check_style_coverage.py`
+- OpenAI Codex Skills docs, Agent Skills specification, GitHub CLI `gh skill`, Nature formatting guide, Nature research figure guide, Nature Portfolio reporting standards
 
 ## Project Facts Discovered Before Editing
 
+- Baseline branch is `harness-vibe-coding-bootstrap`, tracking `origin/harness-vibe-coding-bootstrap`.
+- Latest commit before this WF goal is `e36e3b2 chore: configure harness vibe coding`; worktree was clean at WF intake.
 - The repository is an Agent Skills source and distribution repo, not a web app or service.
-- The source skills are `skills/nature-publication-writing/` and `skills/nature-publication-figure/`; `.agents/skills/` contains repo-scoped symlinks back to these source folders.
-- Installation and update entry points are `scripts/install_skills.py` and `bin/nature-publication-skills.mjs`; they support Codex and Claude Code, user and repo scopes, and symlink or copy modes.
-- Evidence and policy sources are recorded in `references/*.md`; raw user-provided PDFs live under `references-papers-dai-tsinghua/` and are intentionally git-ignored.
-- Temporary audit outputs live under `.audit/` and are intentionally git-ignored.
-- `package.json` exposes the `nature-publication-skills` npm bin but has no npm test script.
-- No `.github/` workflow files were present during bootstrap.
-- `README.md` is the project-facing command source of truth; the Harness generator reported it as the only conflict and skipped it.
+- Existing skills are intentionally concise and use progressive disclosure through `references/`.
+- `references-papers-dai-tsinghua/**` contains 15 local PDFs and is intentionally ignored.
+- Existing validators are green at WF intake: Harness strict, skill validator, style coverage, and npm pack dry-run.
+- `Harness/SETUP.md` was retired in Goal 1 after bootstrap evidence was validated; `CLAUDE.md` no longer routes normal work through setup.
 
 ## Tasks
 
 | # | Task | Owner | Verify | Status |
 | --- | --- | --- | --- | --- |
-| 1 | Ask Agent-link intake questions before editing | main | user approval in chat | Done |
-| 2 | Create branch `harness-vibe-coding-bootstrap` from `develop-nature-publication-skills` | main | `git branch --show-current` | Done |
-| 3 | Run existing-project dry-run | main | `npx --yes create-harness-vibe-coding@latest nature-publication-skills . -y --dry-run --json` | Done |
-| 4 | Generate missing Harness files while preserving conflicts | main | `npx --yes create-harness-vibe-coding@latest nature-publication-skills . -y --on-conflict skip` | Done |
-| 5 | Audit local project facts before editing Harness docs | main | read files listed in Loaded Context | Done |
-| 6 | Replace project placeholders in strict validator scope | main | `rg -n "\\{\\{" Harness/PLAN.md Harness/research/PRD.md Harness/research/research-results.md Harness/architecture.md Harness/domain/ports.md` | Verified |
-| 7 | Run Harness and repo verification | main | commands in Verification table | Verified |
-| 8 | Review diff and commit | main | `git diff --check`, `git status --short`, `git commit` | Pending |
+| 1 | WF intake and baseline verification | main | `git status --short --branch`; baseline validators | Verified |
+| 2 | Dispatch planner, architect, researcher subagents | main | subagent return summaries | Done |
+| 3 | Write detailed eight-goal roadmap and acceptance matrix | main | `docs/superpowers/plans/2026-06-24-wf-eight-goals.md` exists and has no placeholders | Done |
+| 4 | Goal 1: Harness bootstrap closeout audit | main plus reviewer/verifier | strict Harness validator, status/log/push evidence | Verified |
+| 5 | Goal 2: Nature figure skill v2 | main plus test-writer/reviewer | skill validator, style coverage, figure template/QA checks | Pending |
+| 6 | Goal 3: Paper evidence coverage re-audit | main plus researcher | PDF audit scripts and coverage table validator | Pending |
+| 7 | Goal 4: Nature chart/template library | main plus implementer/reviewer | generated sample outputs and template validator | Pending |
+| 8 | Goal 5: Writing skill benchmark | main plus test-writer | benchmark runner or rubric validator | Pending |
+| 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Pending |
+| 10 | Goal 7: Nature submission QA skill | main plus architect/reviewer | skill validator and QA pressure scenarios | Pending |
+| 11 | Goal 8: README/docs productization | main plus reviewer | README checklist, link validation, final smoke | Pending |
+| 12 | Final review, verification, commit/push | main plus verifier | full command matrix, `git diff --check`, pushed branch | Pending |
 
 ## Parallel Dispatch
 
@@ -124,50 +145,53 @@ Use [subagents.md](subagents.md) and [dispatch.md](dispatch.md) when more than o
 
 | Task | Agent | Mode | Read Set | Write Set | Depends On | Output | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Harness merge audit | explorer subagent `Aquinas` | Parallel Read | `Harness/**`, root project metadata, generated files | none | generation complete | read-only risk and verification checklist | Done |
+| Eight-goal decomposition | planner subagent `Dirac` | Parallel Read | `README.md`, `Harness/**`, `skills/**`, `references/**`, `docs/**`, `scripts/**`, `package.json` | none | WF intake | task dependencies, write sets, validation plan | Integrated |
+| Repository structure and boundaries | architect subagent `Euclid` | Parallel Read | `Harness/architecture.md`, `Harness/domain/ports.md`, `skills/**`, `scripts/**`, `references/**`, `docs/**` | none | WF intake | proposed file tree, boundary rules, new-skill decision | Integrated |
+| External sources and skill ecosystem | researcher subagent `Helmholtz` | Parallel Read | `references/external-sources.md`, `docs/installation.md`, `README.md`, skill references plus web sources | none | WF intake | source-backed adopt/reject/watch decisions | Integrated |
 
 ## Subagent Synthesis
 
-Agents used: `Aquinas` read-only explorer
-Findings accepted: strict validator checks only `PLAN.md`, `PRD.md`, `research-results.md`, `architecture.md`, and `ports.md`; `architecture.md` needed real repository architecture despite having no literal placeholders; ports should document command/filesystem boundaries rather than invented Python interfaces; `README.md` must remain preserved.
-Findings rejected: none; the recommendation to restrict the post-generation edit scope to project fact files was applied after scaffold generation, while generated `AGENTS.md`, `CLAUDE.md`, `.claude/**`, `Harness/**`, and `tests/.gitkeep` remain the intentionally added Harness scaffold.
-Conflicts: none yet
-Decisions: main agent retained write ownership of Harness project fact files
-Next write set: final `Harness/PLAN.md` verification update only
-Verification path: strict Harness validator, repo skill validator, style coverage checker, install/status smoke checks, PDF audit scripts, npm pack, diff check
-Residual risk: `Harness/SETUP.md` remains intentionally present until the user accepts this configured baseline or a later feature slice verifies normal mode
+Agents used: `Dirac` planner, `Euclid` architect, `Helmholtz` researcher
+Findings accepted: complete the roadmap as ordered slices with commit boundaries; keep `SKILL.md` files as thin routers; put reusable figure scripts/templates/assets inside the owning figure skill so installed skills stay self-contained; keep repo-level validators and benchmark runners in root `scripts/`; create a third `nature-publication-submission-qa` skill because item 7 is an end-to-end submission readiness workflow; update `gh skill` docs as current but preview and not locally verified; promote Nature Research Figure Guide as a first-class source; fix roadmap checkbox drift before committing Goal 1; add negative validator tests for stale post-bootstrap setup references and missing bootstrap contracts.
+Findings rejected: putting reusable figure templates only in root docs or root scripts was rejected because installed skills would not carry their tools; treating third-party blogs as policy sources was rejected.
+Conflicts: none
+Decisions: Use progressive disclosure; keep `SKILL.md` files concise; implement the roadmap as ordered slices with verification after each slice; retire `Harness/SETUP.md` after Goal 1 because bootstrap is verified and normal WF mode is active.
+Next write set: Goal 1 commit, then Goal 2 feature packet and figure skill v2 references/scripts/templates.
+Verification path: baseline validators, slice-specific validators, final full verification matrix
+Residual risk: the full objective is large; the goal remains active until all eight items are verified. `npm pack --dry-run` currently includes `docs/superpowers/plans/**` because `package.json` packages all `docs/**`; revisit during Goal 6 distribution polish.
 
 ## Agent Handoffs
 
 | Agent | Role | Context Pack | Result |
 | --- | --- | --- | --- |
-| Aquinas | Read-only Harness reviewer | Current repo path, bootstrap goal, strict validator scope, conflict-preservation rule | Confirmed strict placeholder scope, advised real project architecture and command/filesystem port contracts, found no overwrite requirement |
+| Dirac | Planner | Eight-goal roadmap, local repo facts, no writes | Recommended slice order, write sets, validators, and commit boundaries |
+| Euclid | Architect | Structure/boundary review, no writes | Recommended per-skill scripts/templates/assets, root coverage/benchmark/docs boundaries, and third QA skill if cross-skill |
+| Helmholtz | Researcher | Current external sources and skill ecosystem, no writes | Recommended current source updates for Agent Skills, `gh skill`, OpenAI plugins, and Nature/Springer figure and submission guidance |
+| Fermat | Reviewer | Goal 1 diff, no writes | Found stale Task 1 roadmap checkboxes and missing negative tests; both addressed |
 
 ## Decisions
 
 | Date | Decision | Reason |
 | --- | --- | --- |
-| 2026-06-24 | Treat the repo as an existing project, not a new blank app | Current files already define skills, install flow, validation, and evidence sources |
-| 2026-06-24 | Preserve root `README.md` and keep build/test commands there | The generator reported `README.md` as the only conflict, and its README says project commands belong in README rather than `CLAUDE.md` |
-| 2026-06-24 | Install generic Harness only; defer optional React, Playwright, and ECC stack workflows | The project is a documentation and CLI skills repository with no frontend app |
-| 2026-06-24 | Keep `Harness/SETUP.md` during this bootstrap commit | The user explicitly asked to follow it; deletion can happen after the user accepts this configured baseline or a later feature slice verifies normal mode |
+| 2026-06-24 | Execute the eight user-approved goals in order under WF mode | User explicitly approved the eight suggested goals and requested WF mode |
+| 2026-06-24 | Start with durable roadmap and Goal 1 closeout before heavy skill edits | The previous Harness bootstrap left `PLAN.md` stale; a clean state record reduces later drift |
+| 2026-06-24 | Use Python as the default figure/template toolchain unless a specific MATLAB input requires otherwise | Existing figure skill and audit scripts already use Python, PyMuPDF, PIL, matplotlib-friendly guidance, and repo validation |
+| 2026-06-24 | Keep `SKILL.md` concise and place detailed figure/writing/QA material in references, scripts, or assets | OpenAI Codex Skills docs and Agent Skills spec emphasize progressive disclosure and optional resources |
+| 2026-06-24 | Retire `Harness/SETUP.md` and update the validator to support post-bootstrap mode | Bootstrap is verified, `Harness/SETUP.md` is temporary, and future WF tasks should not re-enter setup |
+| 2026-06-24 | Plan item 7 as a third `nature-publication-submission-qa` skill | Submission readiness crosses manuscript text, figures, Extended Data, Supplementary Information, accessibility, image integrity, reporting, and final files |
 
 ## Verification
 
 | Check | Result | Notes |
 | --- | --- | --- |
-| `npx --yes create-harness-vibe-coding@latest nature-publication-skills . -y --dry-run --json` | Passed | Reported 46 creates and one `README.md` conflict before edits |
-| `npx --yes create-harness-vibe-coding@latest nature-publication-skills . -y --on-conflict skip` | Passed | Created 46 files and skipped existing `README.md` |
-| `node Harness/scripts/validate-harness.mjs` | Passed | Non-strict scaffold validation passed before project fact replacement |
-| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict placeholder scope passed after project fact replacement |
-| `python scripts/validate_skills.py` | Passed | Skill structure, metadata, links, dependencies, and figure code language checks passed |
-| `python scripts/check_style_coverage.py` | Passed | Style coverage check passed |
-| `python scripts/install_skills.py install --agent codex --scope repo --repo .audit/install-smoke --mode symlink --dry-run` | Passed | Printed intended symlink installs and metadata write without modifying tracked files |
-| `node bin/nature-publication-skills.mjs status --agent codex --scope repo --repo .audit/install-smoke --dry-run` | Passed | Exited 0; dry-run status reads target state and does not create missing links |
-| `tmp=$(mktemp -d); python scripts/install_skills.py install --agent codex --scope repo --repo "$tmp" --mode symlink; node bin/nature-publication-skills.mjs status --agent codex --scope repo --repo "$tmp"; rm -rf "$tmp"` | Passed | Real temp repo install created both symlinks and status reported both correctly |
-| `python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json` | Passed | Wrote 15 PDF records |
-| `python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json` | Passed | Wrote palette summaries for 15 PDFs |
-| `python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets` | Passed | Wrote contact sheets for all 15 local PDFs |
-| `npm pack --dry-run` | Passed | Reported tarball contents for `nature-publication-skills@0.2.0` |
-| `git diff --cached --check` | Passed | Staged whitespace check passed |
-| `npx --yes create-harness-vibe-coding@latest nature-publication-skills . -y --dry-run --json --on-conflict skip` | Passed | Idempotency dry-run after staging reported created 0, skipped 47, conflicts 0 |
+| `git status --short --branch` | Passed | Worktree clean on `harness-vibe-coding-bootstrap...origin/harness-vibe-coding-bootstrap` at WF intake |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Baseline strict Harness validation passed |
+| `python scripts/validate_skills.py` | Passed | Baseline skill validation passed |
+| `python scripts/check_style_coverage.py` | Passed | Baseline style coverage passed |
+| `npm pack --dry-run` | Passed | Baseline package dry-run reported `nature-publication-skills@0.2.0` tarball contents |
+| `python tests/test_validate_harness.py` | Passed | Three tests cover valid post-bootstrap mode, stale post-bootstrap setup reference rejection, and missing bootstrap contract rejection |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Post-bootstrap strict Harness validation passed after retiring setup |
+| `python scripts/validate_skills.py` | Passed | Skill validation still passed after Goal 1 changes |
+| `git diff --check` | Passed | No whitespace errors after Goal 1 changes |
+| `python scripts/check_style_coverage.py` | Passed | Style coverage still passed after Goal 1 changes |
+| `npm pack --dry-run` | Passed | Package dry-run passes; note that `docs/superpowers/plans/**` is included by current `docs/**` package rule |

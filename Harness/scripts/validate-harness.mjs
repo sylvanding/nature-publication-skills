@@ -216,7 +216,14 @@ requireText('CLAUDE.md', 'user corrects the same assumption/pattern 2+ times', '
 requireText('CLAUDE.md', 'If `Harness/` exists, this repository is governed by the Harness contract', 'Harness binding contract');
 requireText('CLAUDE.md', 'Harness/MEMORY.md` is the memory/resource router', 'memory/resource router');
 requireText('CLAUDE.md', 'Harness/README.md#Load By Task', 'Harness task router');
-requireText('CLAUDE.md', 'Harness/SETUP.md` exists, follow it before normal project work', 'setup bootstrap contract');
+const setupExists = fs.existsSync(path.join(root, 'Harness/SETUP.md'));
+const setupBootstrapContract = 'Harness/SETUP.md` exists, follow it before normal project work';
+const claude = read('CLAUDE.md');
+if (setupExists) {
+  requireText('CLAUDE.md', setupBootstrapContract, 'setup bootstrap contract');
+} else if (claude.includes(setupBootstrapContract)) {
+  errors.push('CLAUDE.md still references retired Harness/SETUP.md bootstrap contract');
+}
 requireText('CLAUDE.md', 'subagent-orchestrator` and `Harness/subagents.md', 'subagent orchestrator entry trigger');
 for (const heading of ['## 2. Think Before Coding', '## 3. Simplicity First', '## 4. Surgical Changes', '## 5. Goal-Driven Execution']) {
   requireText('CLAUDE.md', heading, `Karpathy-style rule heading: ${heading}`);

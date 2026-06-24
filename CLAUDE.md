@@ -6,7 +6,6 @@ Root entry for Claude Code. Keep this file short.
 
 - If `Harness/` exists, this repository is governed by the Harness contract. Treat these files as mandatory operating instructions, not optional references.
 - Every session: load `Harness/MEMORY.md` first, then `Harness/README.md`.
-- If `Harness/SETUP.md` exists, follow it before normal project work; it is the install/bootstrap contract and may be deleted only after setup is complete.
 - `Harness/MEMORY.md` is the memory/resource router: agents, skills, durable memories, and cross-session lessons. Follow its registrations when selecting agents/skills or recording memory.
 - `Harness/README.md` is the task router. For every request, check `Harness/README.md#Load By Task`; if a row matches, read and follow those docs before acting.
 - If work spans more than one step, update `Harness/PLAN.md`.
