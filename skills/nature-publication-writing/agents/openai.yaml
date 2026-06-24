@@ -1,0 +1,6 @@
+interface:
+  display_name: "Nature Writing"
+  short_description: "Nature-family manuscript writing"
+  default_prompt: "Use $nature-publication-writing to draft or audit a Nature-family manuscript section with source-grounded claims."
+policy:
+  allow_implicit_invocation: true
