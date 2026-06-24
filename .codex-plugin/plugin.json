@@ -1,0 +1,38 @@
+{
+  "name": "nature-publication-skills",
+  "version": "0.2.0",
+  "description": "Nature-family manuscript writing and publication-figure skills with source-backed style evidence, install/update scripts, and Codex app metadata.",
+  "author": {
+    "name": "djx"
+  },
+  "homepage": "https://github.com/sylvanding/nature-publication-skills",
+  "repository": "https://github.com/sylvanding/nature-publication-skills",
+  "license": "MIT",
+  "keywords": [
+    "nature",
+    "scientific-writing",
+    "publication-figures",
+    "agent-skills",
+    "codex",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Nature Publication Skills",
+    "shortDescription": "Nature-style writing and figure workflows",
+    "longDescription": "Source-backed Agent Skills for Nature-family manuscript writing and publication figure design. Includes Chinese skill instructions, English-only figure text rules, reference-paper evidence, install/update tooling, and validation scripts.",
+    "developerName": "djx",
+    "category": "Research",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/sylvanding/nature-publication-skills",
+    "defaultPrompt": [
+      "Use Nature Publication Skills to draft a Nature-family manuscript section.",
+      "Use Nature Publication Skills to design and audit an English-labeled publication figure."
+    ],
+    "brandColor": "#007C89",
+    "screenshots": []
+  }
+}

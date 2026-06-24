@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import json
 import re
 import sys
 from pathlib import Path
@@ -19,6 +20,9 @@ REQUIRED_COMMANDS = [
     "python scripts/make_pdf_contact_sheets.py",
     "python scripts/analyze_pdf_palette.py",
     "python scripts/check_style_coverage.py",
+    "python scripts/install_skills.py install",
+    "node bin/nature-publication-skills.mjs status",
+    "npm pack --dry-run",
 ]
 REQUIRED_MODULES = ["fitz", "PIL"]
 
@@ -111,6 +115,45 @@ def validate_repository(root: Path) -> list[str]:
     req = root / "requirements.txt"
     if not req.exists():
         errors.append("missing requirements.txt")
+    docs_install = root / "docs" / "installation.md"
+    if not docs_install.exists():
+        errors.append("missing docs/installation.md")
+    plugin_json = root / ".codex-plugin" / "plugin.json"
+    if not plugin_json.exists():
+        errors.append("missing .codex-plugin/plugin.json")
+    else:
+        try:
+            plugin = json.loads(plugin_json.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f"{plugin_json}: invalid JSON: {exc}")
+        else:
+            for key in ("name", "version", "description", "skills", "interface"):
+                if key not in plugin:
+                    errors.append(f"{plugin_json}: missing {key}")
+            if plugin.get("skills") != "./skills/":
+                errors.append(f"{plugin_json}: skills must be ./skills/")
+    package_json = root / "package.json"
+    if not package_json.exists():
+        errors.append("missing package.json")
+    else:
+        try:
+            package = json.loads(package_json.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f"{package_json}: invalid JSON: {exc}")
+        else:
+            bin_path = package.get("bin", {}).get("nature-publication-skills")
+            if bin_path != "bin/nature-publication-skills.mjs":
+                errors.append(f"{package_json}: missing nature-publication-skills bin")
+            elif not (root / bin_path).exists():
+                errors.append(f"{package_json}: bin target missing: {bin_path}")
+    installer = root / "scripts" / "install_skills.py"
+    if not installer.exists():
+        errors.append("missing scripts/install_skills.py")
+    repo_skills = root / ".agents" / "skills"
+    for skill in ("nature-publication-writing", "nature-publication-figure"):
+        link = repo_skills / skill
+        if not link.exists():
+            errors.append(f"missing repo-scoped skill link: {link}")
     for module in REQUIRED_MODULES:
         if importlib.util.find_spec(module) is None:
             errors.append(f"missing Python module dependency: {module}")
