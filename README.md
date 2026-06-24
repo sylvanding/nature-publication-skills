@@ -49,12 +49,13 @@ npx github:sylvanding/nature-publication-skills install --agent codex --scope us
 Python dependencies:
 
 ```bash
-python -m pip install pymupdf pillow
+python -m pip install -r requirements.txt
 ```
 
 ```bash
 python scripts/validate_skills.py
 python scripts/validate_figure_v2.py
+python scripts/validate_figure_templates.py
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
 python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets
 python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json

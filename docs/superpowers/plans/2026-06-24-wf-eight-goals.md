@@ -186,7 +186,7 @@ Expected: both exit 0.
 - Modify: `skills/nature-publication-figure/references/figure-template-catalog.md`
 - Test: `tests/benchmarks/figure/`
 
-- [ ] **Step 1: Define template set**
+- [x] **Step 1: Define template set**
 
 Minimum templates:
 
@@ -196,7 +196,7 @@ Minimum templates:
 - `input_output_error_map`
 - `supplementary_validation_matrix`
 
-- [ ] **Step 2: Implement first deterministic template**
+- [x] **Step 2: Implement first deterministic template**
 
 Start with `multi_panel_microscopy_plate` because it covers the hardest figure style constraints.
 
@@ -206,7 +206,7 @@ Expected outputs:
 - PNG preview
 - sidecar JSON with source/provenance fields
 
-- [ ] **Step 3: Add template validator**
+- [x] **Step 3: Add template validator**
 
 Check:
 
@@ -215,7 +215,7 @@ Check:
 - expected color tokens are used
 - sidecar JSON has required provenance keys
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 Run template generator and validator, then:
 

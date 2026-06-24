@@ -2,6 +2,15 @@
 
 本文件定义可复用模板的目录和输入/输出契约。Goal 2 只定义 template families；真正可运行的模板脚本在 Goal 4 实现。所有模板的图内文字必须是英文。
 
+Goal 4 已实现首个 deterministic smoke template：
+
+- 生成器：`scripts/generate_multi_panel_microscopy_plate.py`
+- 配置：`templates/multi_panel_microscopy_plate.json`
+- 调色板：`assets/palettes.json`
+- 仓库级验证：`python scripts/validate_figure_templates.py`
+
+模板脚本默认生成 mock-only PDF、PNG preview 和 provenance JSON。真实投稿图必须替换为真实 source files，并在 sidecar 中记录 provenance。
+
 ## Template contract
 
 每个模板必须声明：
@@ -144,8 +153,8 @@
   "mock_only": false,
   "source_files": [],
   "panel_map": {},
-  "pixel_size": null,
-  "scale_bar": null,
+  "pixel_size_um": null,
+  "scale_bar_um": null,
   "normalization": null,
   "software": {},
   "outputs": []

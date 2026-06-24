@@ -1,0 +1,22 @@
+{
+  "tokens": {
+    "blue": "#3B6FB6",
+    "cyan": "#00A6D6",
+    "green": "#2CA25F",
+    "orange": "#E07A2D",
+    "magenta": "#C24ACB",
+    "purple": "#7B61B3",
+    "gray": "#6B7280",
+    "black": "#111111",
+    "white": "#FFFFFF"
+  },
+  "channel_luts": {
+    "cyan": ["#000000", "#00A6D6"],
+    "magenta": ["#000000", "#C24ACB"],
+    "green": ["#000000", "#2CA25F"],
+    "orange": ["#000000", "#E07A2D"],
+    "gray": ["#000000", "#FFFFFF"]
+  },
+  "continuous_colormaps": ["viridis", "magma", "cividis", "inferno"],
+  "avoid": ["jet", "rainbow", "red-green-only", "colored-text-legends"]
+}
