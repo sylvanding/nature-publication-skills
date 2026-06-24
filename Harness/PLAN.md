@@ -24,10 +24,10 @@ Current: Verify
 ## Heartbeat
 
 Mode: wf
-Last beat: 2026-06-25T00:55:00+08:00
+Last beat: 2026-06-24T23:38:00+08:00
 Current phase: Verify
 Current blocker: none
-Next beat trigger: after Goal 6 commit and before Goal 7 submission QA skill
+Next beat trigger: after Goal 7 commit and before Goal 8 docs productization
 Failure count: 0
 Recovery action: narrow to the next unfinished roadmap slice, rerun the relevant validator, and dispatch debugger only for reproduced failures
 
@@ -55,7 +55,7 @@ Allowed task statuses: Pending / In Progress / Blocked / Done / Verified.
 - [x] Goal 4: Template library provides runnable Nature-style figure examples or scripts with English labels and deterministic validation.
 - [x] Goal 5: Writing benchmark provides prompts, expected checks, and a runner or manual rubric for title, abstract, results, legends, methods, and discussion.
 - [x] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
-- [ ] Goal 7: Submission QA skill exists or the existing skills gain a clearly routed QA workflow covering figure legends, statistics, image integrity, reporting, data/code availability, and supplementary consistency.
+- [x] Goal 7: Submission QA skill exists or the existing skills gain a clearly routed QA workflow covering figure legends, statistics, image integrity, reporting, data/code availability, and supplementary consistency.
 - [ ] Goal 8: README/docs are productized while preserving current project facts and validation commands.
 - [ ] All new claims have local or web source evidence recorded in `references/**`, skill references, or `Harness/research/research-results.md`.
 - [ ] Final validators pass: `node Harness/scripts/validate-harness.mjs --strict`, `python scripts/validate_skills.py`, `python scripts/check_style_coverage.py`, benchmark/template validators, install smoke checks, PDF audit checks when local corpus is present, `npm pack --dry-run`, and `git diff --check`.
@@ -105,12 +105,15 @@ Keep this list short. Add only docs/files used for the current phase.
 - `skills/nature-publication-figure/references/*`
 - `skills/nature-publication-writing/SKILL.md`
 - `skills/nature-publication-writing/references/*`
+- `skills/nature-publication-submission-qa/SKILL.md`
+- `skills/nature-publication-submission-qa/references/*`
 - `references/source-paper-index.md`
 - `references/figure-audit-register.md`
 - `references/external-sources.md`
 - `scripts/validate_skills.py`
+- `scripts/validate_submission_qa.py`
 - `scripts/check_style_coverage.py`
-- OpenAI Codex Skills docs, Agent Skills specification, GitHub CLI `gh skill`, Nature formatting guide, Nature research figure guide, Nature Portfolio reporting standards
+- OpenAI Codex Skills docs, Agent Skills specification, GitHub CLI `gh skill`, Nature formatting guide, Nature final submission, Nature research figure guide, Nature Portfolio reporting standards, Nature Portfolio image integrity, Springer Nature accessibility, Springer Nature AI guidance
 
 ## Project Facts Discovered Before Editing
 
@@ -135,7 +138,7 @@ Keep this list short. Add only docs/files used for the current phase.
 | 7 | Goal 4: Nature chart/template library | main plus implementer/reviewer | generated sample outputs and template validator | Verified |
 | 8 | Goal 5: Writing skill benchmark | main plus test-writer | benchmark runner or rubric validator | Verified |
 | 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Verified |
-| 10 | Goal 7: Nature submission QA skill | main plus architect/reviewer | skill validator and QA pressure scenarios | Pending |
+| 10 | Goal 7: Nature submission QA skill | main plus architect/reviewer | skill validator and QA pressure scenarios | Verified |
 | 11 | Goal 8: README/docs productization | main plus reviewer | README checklist, link validation, final smoke | Pending |
 | 12 | Final review, verification, commit/push | main plus verifier | full command matrix, `git diff --check`, pushed branch | Pending |
 
@@ -174,6 +177,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | Aristotle | Reviewer | Goal 4 template library diff and generated smoke output, no writes | Found README dependency drift, sidecar contract mismatch, and phase metadata drift; all addressed |
 | James | Reviewer | Goal 5 writing benchmark diff, no writes | Found broken benchmark routing, roadmap drift, ambiguous rubric applicability, and stale closeout; all addressed |
 | Socrates | Reviewer | Goal 6 install/distribution diff and package dry-run, no writes | Found npx symlink risk, missing `gh skill` preview warning, dry-run-only install smoke, incomplete package assertions, and stale closeout; all addressed |
+| Archimedes | Pressure reviewer | Goal 7 mock submission package audit without QA skill, no writes | Confirmed likely misses around figure legends, statistics, scale bars/raw images, reporting summary, data/code availability, supplementary consistency, and final file readiness; current QA skill covers the hard gates |
 
 ## Decisions
 
@@ -187,8 +191,9 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | 2026-06-24 | Plan item 7 as a third `nature-publication-submission-qa` skill | Submission readiness crosses manuscript text, figures, Extended Data, Supplementary Information, accessibility, image integrity, reporting, and final files |
 | 2026-06-24 | Add `references/figure-style-rule-map.md` as the crosswalk from local figures to figure skill rules | Goal 3 needs durable evidence that every local figure/table family is tied to source paths and reusable style rules |
 | 2026-06-24 | Implement `multi_panel_microscopy_plate` as the first executable template | It exercises the highest-risk figure requirements: microscopy panels, scale bars, English labels, palette tokens, vector/preview export, and provenance sidecar |
-| 2026-06-25 | Keep writing benchmarks inside the writing skill folder | Copy-mode installs only carry the skill directory, so benchmark prompts and rubric must be skill-contained |
-| 2026-06-25 | Exclude internal `docs/superpowers/**` from npm packages | Distribution packages should ship user-facing docs and skills, not Harness execution plans |
+| 2026-06-24 | Keep writing benchmarks inside the writing skill folder | Copy-mode installs only carry the skill directory, so benchmark prompts and rubric must be skill-contained |
+| 2026-06-24 | Exclude internal `docs/superpowers/**` from npm packages | Distribution packages should ship user-facing docs and skills, not Harness execution plans |
+| 2026-06-24 | Implement submission readiness as a third installed skill | The workflow crosses writing, figures, image integrity, reporting standards, data/code availability, AI use, Extended Data, and Supplementary Information |
 
 ## Verification
 
@@ -243,3 +248,14 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict Harness validation passed after Goal 6 changes |
 | `npm pack --dry-run` | Passed | Tarball excludes internal `docs/superpowers/**` and includes required distribution files |
 | `git diff --check` | Passed | No whitespace errors after Goal 6 changes |
+| `python scripts/validate_submission_qa.py` | Failed as RED | Missing submission QA skill directory, installer route, plugin mention, README entries, and repo-scoped skill link |
+| `python scripts/validate_submission_qa.py` | Passed | Output: `Submission QA validation passed.` |
+| `python scripts/validate_skills.py` | Passed | Output: `Validation passed.` |
+| `python scripts/validate_distribution.py` | Passed | Output: `Distribution validation passed.` |
+| `python scripts/validate_writing_benchmark.py` | Passed | Output: `Writing benchmark validation passed.` |
+| `python scripts/validate_figure_v2.py` | Passed | Output: `Figure v2 validation passed.` |
+| `python scripts/validate_figure_templates.py` | Passed | Output: `Figure template validation passed.` |
+| `python scripts/check_style_coverage.py` | Passed | Output: `Style coverage check passed.` |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Output: `Harness validation passed (strict).` |
+| `npm pack --dry-run` | Passed | Tarball dry-run includes `skills/nature-publication-submission-qa/**` and `scripts/validate_submission_qa.py` |
+| `git diff --check` | Passed | Exit 0 with no whitespace findings |

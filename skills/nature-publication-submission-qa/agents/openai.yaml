@@ -1,0 +1,6 @@
+interface:
+  display_name: "Nature Submission QA"
+  short_description: "Nature-family submission readiness audit"
+  default_prompt: "Use $nature-publication-submission-qa to audit a Nature-family manuscript package before submission or final upload, listing blockers, missing inputs, figure/image risks, reporting gaps, and supplementary inconsistencies."
+policy:
+  allow_implicit_invocation: true

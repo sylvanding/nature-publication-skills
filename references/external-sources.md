@@ -1,6 +1,6 @@
 # 外部规范与 Skills 来源
 
-初始访问日期：2026-06-23。Agent Skills、Codex plugin、Nature figure guide 和 Springer Nature AI guidance 于 2026-06-24 重新核验。所有 URL 应在用于投稿政策、格式政策或易变事实前重新核验。
+初始访问日期：2026-06-23。Agent Skills、Codex plugin、Nature figure guide 和 Springer Nature AI guidance 于 2026-06-24 重新核验；Nature final submission、formatting guide、Nature Portfolio reporting standards、image integrity、Springer Nature accessibility 和 AI guidance 于 2026-06-24 为 submission QA skill 重新核验。所有 URL 应在用于投稿政策、格式政策或易变事实前重新核验。
 
 ## Agent Skills 结构来源
 

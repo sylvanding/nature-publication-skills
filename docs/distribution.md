@@ -81,6 +81,7 @@ python scripts/validate_skills.py
 python scripts/validate_figure_v2.py
 python scripts/validate_figure_templates.py
 python scripts/validate_writing_benchmark.py
+python scripts/validate_submission_qa.py
 python scripts/validate_distribution.py
 python scripts/check_style_coverage.py
 node Harness/scripts/validate-harness.mjs --strict

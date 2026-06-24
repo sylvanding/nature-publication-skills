@@ -318,11 +318,11 @@ Run install smoke tests and package dry-run.
 - Create: `skills/nature-publication-submission-qa/references/`
 - Modify: `.codex-plugin/plugin.json` and `scripts/validate_skills.py` expectations if a third skill is added
 
-- [ ] **Step 1: Choose skill boundary**
+- [x] **Step 1: Choose skill boundary**
 
 Create a third skill because submission QA is a distinct end-to-end workflow that crosses manuscript text, figures, Extended Data, Supplementary Information, accessibility, image integrity, reporting standards, and final file readiness.
 
-- [ ] **Step 2: RED pressure scenario**
+- [x] **Step 2: RED pressure scenario**
 
 Ask a subagent to audit a mock submission package without QA guidance and document likely missed checks:
 
@@ -334,15 +334,16 @@ Ask a subagent to audit a mock submission package without QA guidance and docume
 - reporting summary
 - supplementary consistency
 
-- [ ] **Step 3: Add QA workflow**
+- [x] **Step 3: Add QA workflow**
 
 Include source-backed QA sections and missing-input behavior.
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 Run:
 
 ```bash
+python scripts/validate_submission_qa.py
 python scripts/validate_skills.py
 python scripts/check_style_coverage.py
 ```

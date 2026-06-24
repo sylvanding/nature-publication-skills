@@ -31,6 +31,12 @@ REQUIRED_PACKAGE_FILES = [
     "skills/nature-publication-writing/agents/openai.yaml",
     "skills/nature-publication-writing/references/benchmarks/golden/writing/rubric.md",
     "skills/nature-publication-writing/references/benchmarks/prompts/writing/title.md",
+    "skills/nature-publication-submission-qa/SKILL.md",
+    "skills/nature-publication-submission-qa/agents/openai.yaml",
+    "skills/nature-publication-submission-qa/references/submission-readiness-checklist.md",
+    "skills/nature-publication-submission-qa/references/figure-and-image-integrity.md",
+    "skills/nature-publication-submission-qa/references/data-code-reporting.md",
+    "skills/nature-publication-submission-qa/references/supplementary-consistency.md",
     "scripts/validate_distribution.py",
 ]
 FORBIDDEN_PACKAGE_PREFIXES = [
@@ -141,7 +147,7 @@ def main() -> int:
             errors.append(f"copy install smoke failed for {agent}:\n{result.stdout}")
             continue
         target_root = target_repo / (".agents/skills" if agent == "codex" else ".claude/skills")
-        for skill in ("nature-publication-figure", "nature-publication-writing"):
+        for skill in ("nature-publication-figure", "nature-publication-writing", "nature-publication-submission-qa"):
             skill_dir = target_root / skill
             if not (skill_dir / "SKILL.md").exists():
                 errors.append(f"copy install smoke missing {skill}/SKILL.md for {agent}")
@@ -157,6 +163,10 @@ def main() -> int:
             / "rubric.md"
         ).exists():
             errors.append("copy install smoke missing writing benchmark rubric for codex")
+        if agent == "codex" and not (
+            target_root / "nature-publication-submission-qa" / "references" / "data-code-reporting.md"
+        ).exists():
+            errors.append("copy install smoke missing submission QA data/code reference for codex")
 
     if errors:
         print("Distribution validation failed:")

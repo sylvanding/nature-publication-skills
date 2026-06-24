@@ -13,7 +13,11 @@ import sys
 from pathlib import Path
 
 
-SKILL_NAMES = ("nature-publication-writing", "nature-publication-figure")
+SKILL_NAMES = (
+    "nature-publication-writing",
+    "nature-publication-figure",
+    "nature-publication-submission-qa",
+)
 AGENTS = ("codex", "claude")
 SCOPES = ("user", "repo")
 MODES = ("symlink", "copy")

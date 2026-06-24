@@ -8,8 +8,9 @@
 
 - `skills/nature-publication-writing/`：中文说明的 Nature-family 论文写作 skill，覆盖摘要、引言、结果、讨论、方法、图例和补充材料文字。
 - `skills/nature-publication-figure/`：中文说明的 Nature-family 图表绘制与审计 skill，重点覆盖显微图像板、方法流程图、统计图、空间组学图和 Supplementary figure matrix。所有示例图表与图内文本必须使用英文。
+- `skills/nature-publication-submission-qa/`：中文说明的 Nature-family 投稿前 QA skill，覆盖主文、主图、Extended Data、Supplementary Information、统计、图像完整性、Reporting Summary、Data availability、Code availability 和 AI use。
 
-本仓库还提供 `.agents/skills/` 软链接，所以在仓库根目录或子目录启动 Codex 时可直接发现这两个 skills。
+本仓库还提供 `.agents/skills/` 软链接，所以在仓库根目录或子目录启动 Codex 时可直接发现这三个 skills。
 
 ## Evidence
 
@@ -57,6 +58,7 @@ python scripts/validate_skills.py
 python scripts/validate_figure_v2.py
 python scripts/validate_figure_templates.py
 python scripts/validate_writing_benchmark.py
+python scripts/validate_submission_qa.py
 python scripts/validate_distribution.py
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
 python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets
