@@ -31,8 +31,7 @@ Planned additions and modifications:
 - Create `skills/nature-publication-figure/templates/`: reusable Python figure template entrypoints installed with the figure skill.
 - Create `skills/nature-publication-figure/assets/palettes.json`: palette tokens and channel mappings that travel with the installed skill.
 - Modify `skills/nature-publication-writing/SKILL.md`: route to benchmark and submission QA where relevant.
-- Create `references/benchmarks/prompts/`: benchmark prompts grouped by writing, figure, and submission QA.
-- Create `references/benchmarks/golden/`: golden/rubric records that are evidence artifacts, not executable code.
+- Create skill-contained benchmark prompts/rubrics under the owning skill when installed skills need to carry them.
 - Create `tests/benchmarks/`: lightweight structural tests for benchmark files.
 - Modify `scripts/validate_skills.py` and `scripts/check_style_coverage.py` only when new artifacts need automated validation.
 - Modify `docs/installation.md` and `README.md`: distribution, release, validation, and productized docs.
@@ -229,13 +228,12 @@ Expected: all exit 0.
 ## Task 5: Writing Skill Benchmark
 
 **Files:**
-- Create: `references/benchmarks/prompts/writing/*.md`
-- Create: `references/benchmarks/golden/writing/rubric.md`
-- Create: `tests/benchmarks/writing/`
-- Create or modify: `scripts/run_writing_benchmark.py`
+- Create: `skills/nature-publication-writing/references/benchmarks/prompts/writing/*.md`
+- Create: `skills/nature-publication-writing/references/benchmarks/golden/writing/rubric.md`
+- Create or modify: `scripts/validate_writing_benchmark.py`
 - Modify: `skills/nature-publication-writing/references/section-and-legend-playbook.md`
 
-- [ ] **Step 1: Define benchmark prompts**
+- [x] **Step 1: Define benchmark prompts**
 
 Prompts:
 
@@ -248,7 +246,7 @@ Prompts:
 - discussion paragraph
 - supplementary caption
 
-- [ ] **Step 2: Define deterministic rubric**
+- [x] **Step 2: Define deterministic rubric**
 
 Rubric checks:
 
@@ -258,17 +256,17 @@ Rubric checks:
 - figure legend defines panel labels, n, error, statistics, and scale bars when applicable
 - target language respected
 
-- [ ] **Step 3: Add benchmark runner or manual checklist validator**
+- [x] **Step 3: Add benchmark runner or manual checklist validator**
 
 Prefer deterministic text checks where possible; use manual rubric for semantic quality that cannot be automated safely.
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 Run:
 
 ```bash
+python scripts/validate_writing_benchmark.py
 python scripts/validate_skills.py
-python scripts/run_writing_benchmark.py --check-only
 ```
 
 Expected: skill validation passes and benchmark files are structurally valid.

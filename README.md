@@ -56,6 +56,7 @@ python -m pip install -r requirements.txt
 python scripts/validate_skills.py
 python scripts/validate_figure_v2.py
 python scripts/validate_figure_templates.py
+python scripts/validate_writing_benchmark.py
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
 python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets
 python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json

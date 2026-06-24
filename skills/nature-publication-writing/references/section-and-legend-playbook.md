@@ -74,6 +74,30 @@
 - 图像处理是否在 Methods 或图例中透明说明？
 - 图内文字是否全英文？
 
+## Methods
+
+检查问题：
+
+- 数据、样本、软件、硬件、参数和版本是否足以复现？
+- 图像处理步骤是否具体到 normalization、filtering、projection、thresholding、gamma、deconvolution 等实际操作？
+- 统计检验、`n` 的定义、生物/技术重复和排除标准是否明确？
+- 缺失信息是否标为 `Missing inputs`，而不是被补写成看似真实的细节？
+
+写作规则：
+
+- 用可复现实词，不用宣传语。
+- 把已经执行的步骤和待补充信息分开。
+- 不要把关键方法藏在图例或补充 caption 里。
+
+## Discussion
+
+检查问题：
+
+- 是否综合贡献，而不是复述 Results？
+- 是否指出证据链最强的位置？
+- 是否清楚说明适用边界、失败条件和未来验证方向？
+- 是否避免 clinical translation、universal generalization 等无证据外推？
+
 ## Supplementary Information
 
 补充材料应按验证主题组织：

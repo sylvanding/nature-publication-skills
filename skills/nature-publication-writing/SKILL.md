@@ -13,6 +13,8 @@ description: Nature-family manuscript writing skill. Use when drafting, restruct
 2. 按需读取 reference：
    - 写作风格与本地论文证据：`references/writing-style-atlas.md`
    - 分节写作与图例规则：`references/section-and-legend-playbook.md`
+   - Benchmark prompts：`references/benchmarks/prompts/writing/`
+   - Benchmark rubric：`references/benchmarks/golden/writing/rubric.md`
 3. 不得替用户发明结果、统计显著性、样本量、模型性能、数据来源或论文贡献。
 
 ## 默认写作姿态
