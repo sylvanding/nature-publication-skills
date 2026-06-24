@@ -280,11 +280,11 @@ Expected: skill validation passes and benchmark files are structurally valid.
 - Consider create: `.github/workflows/validate.yml`
 - Modify: `.codex-plugin/plugin.json` if skill set changes
 
-- [ ] **Step 1: Refresh source evidence**
+- [x] **Step 1: Refresh source evidence**
 
 Update `references/external-sources.md` with current dates and current links for OpenAI Codex Skills, Agent Skills spec, GitHub CLI `gh skill`, and relevant repository examples.
 
-- [ ] **Step 2: Add distribution checklist**
+- [x] **Step 2: Add distribution checklist**
 
 Document:
 
@@ -296,9 +296,9 @@ Document:
 - plugin metadata sync
 - release verification commands
 
-- [ ] **Step 3: Add CI if safe**
+- [x] **Step 3: Add CI if safe**
 
-If adding CI, keep it minimal:
+Decision: defer CI to a later explicit CI task; Goal 6 instead adds local distribution validation and package-boundary checks. If adding CI later, keep it minimal:
 
 ```yaml
 python scripts/validate_skills.py
@@ -307,7 +307,7 @@ npm pack --dry-run
 node Harness/scripts/validate-harness.mjs --strict
 ```
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 Run install smoke tests and package dry-run.
 

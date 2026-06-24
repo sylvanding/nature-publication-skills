@@ -24,10 +24,10 @@ Current: Verify
 ## Heartbeat
 
 Mode: wf
-Last beat: 2026-06-25T00:22:00+08:00
+Last beat: 2026-06-25T00:55:00+08:00
 Current phase: Verify
 Current blocker: none
-Next beat trigger: after Goal 5 commit and before Goal 6 distribution polish
+Next beat trigger: after Goal 6 commit and before Goal 7 submission QA skill
 Failure count: 0
 Recovery action: narrow to the next unfinished roadmap slice, rerun the relevant validator, and dispatch debugger only for reproduced failures
 
@@ -54,7 +54,7 @@ Allowed task statuses: Pending / In Progress / Blocked / Done / Verified.
 - [x] Goal 3: Evidence coverage maps every local main, Extended Data, Supplementary figure/table family to skill rules and sources.
 - [x] Goal 4: Template library provides runnable Nature-style figure examples or scripts with English labels and deterministic validation.
 - [x] Goal 5: Writing benchmark provides prompts, expected checks, and a runner or manual rubric for title, abstract, results, legends, methods, and discussion.
-- [ ] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
+- [x] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
 - [ ] Goal 7: Submission QA skill exists or the existing skills gain a clearly routed QA workflow covering figure legends, statistics, image integrity, reporting, data/code availability, and supplementary consistency.
 - [ ] Goal 8: README/docs are productized while preserving current project facts and validation commands.
 - [ ] All new claims have local or web source evidence recorded in `references/**`, skill references, or `Harness/research/research-results.md`.
@@ -134,7 +134,7 @@ Keep this list short. Add only docs/files used for the current phase.
 | 6 | Goal 3: Paper evidence coverage re-audit | main plus researcher | PDF audit scripts and coverage table validator | Verified |
 | 7 | Goal 4: Nature chart/template library | main plus implementer/reviewer | generated sample outputs and template validator | Verified |
 | 8 | Goal 5: Writing skill benchmark | main plus test-writer | benchmark runner or rubric validator | Verified |
-| 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Pending |
+| 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Verified |
 | 10 | Goal 7: Nature submission QA skill | main plus architect/reviewer | skill validator and QA pressure scenarios | Pending |
 | 11 | Goal 8: README/docs productization | main plus reviewer | README checklist, link validation, final smoke | Pending |
 | 12 | Final review, verification, commit/push | main plus verifier | full command matrix, `git diff --check`, pushed branch | Pending |
@@ -156,9 +156,9 @@ Findings accepted: complete the roadmap as ordered slices with commit boundaries
 Findings rejected: putting reusable figure templates only in root docs or root scripts was rejected because installed skills would not carry their tools; treating third-party blogs as policy sources was rejected.
 Conflicts: none
 Decisions: Use progressive disclosure; keep `SKILL.md` files concise; implement the roadmap as ordered slices with verification after each slice; retire `Harness/SETUP.md` after Goal 1 because bootstrap is verified and normal WF mode is active.
-Next write set: Goal 6 install/distribution polish: `README.md`, `docs/installation.md`, `package.json`, `.codex-plugin/plugin.json`, packaging docs, and distribution validators.
+Next write set: Goal 7 submission QA skill: `skills/nature-publication-submission-qa/**`, installer/plugin metadata, validation scripts, README/docs, and related Harness feature records.
 Verification path: baseline validators, slice-specific validators, final full verification matrix
-Residual risk: the full objective is large; the goal remains active until all eight items are verified. `npm pack --dry-run` currently includes `docs/superpowers/plans/**` because `package.json` packages all `docs/**`; revisit during Goal 6 distribution polish.
+Residual risk: the full objective is large; the goal remains active until all eight items are verified. Goal 6 now excludes internal `docs/superpowers/**` from npm packages; keep watching package contents when new docs or skills are added.
 
 ## Agent Handoffs
 
@@ -173,6 +173,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | Leibniz | Reviewer | Goal 3 coverage diff and regenerated `.audit/**` evidence, no writes | Found no blocking coverage issues; requested status closeout sync, now addressed |
 | Aristotle | Reviewer | Goal 4 template library diff and generated smoke output, no writes | Found README dependency drift, sidecar contract mismatch, and phase metadata drift; all addressed |
 | James | Reviewer | Goal 5 writing benchmark diff, no writes | Found broken benchmark routing, roadmap drift, ambiguous rubric applicability, and stale closeout; all addressed |
+| Socrates | Reviewer | Goal 6 install/distribution diff and package dry-run, no writes | Found npx symlink risk, missing `gh skill` preview warning, dry-run-only install smoke, incomplete package assertions, and stale closeout; all addressed |
 
 ## Decisions
 
@@ -187,6 +188,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | 2026-06-24 | Add `references/figure-style-rule-map.md` as the crosswalk from local figures to figure skill rules | Goal 3 needs durable evidence that every local figure/table family is tied to source paths and reusable style rules |
 | 2026-06-24 | Implement `multi_panel_microscopy_plate` as the first executable template | It exercises the highest-risk figure requirements: microscopy panels, scale bars, English labels, palette tokens, vector/preview export, and provenance sidecar |
 | 2026-06-25 | Keep writing benchmarks inside the writing skill folder | Copy-mode installs only carry the skill directory, so benchmark prompts and rubric must be skill-contained |
+| 2026-06-25 | Exclude internal `docs/superpowers/**` from npm packages | Distribution packages should ship user-facing docs and skills, not Harness execution plans |
 
 ## Verification
 
@@ -232,3 +234,12 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict Harness validation passed after Goal 5 feature record updates |
 | `npm pack --dry-run` | Passed | Tarball includes skill-contained writing benchmarks |
 | `git diff --check` | Passed | No whitespace errors after Goal 5 changes |
+| `python scripts/validate_distribution.py` | Passed | Goal 6 package boundary and real copy install smoke passed |
+| `python scripts/validate_skills.py` | Passed | Skill validation passed after Goal 6 changes |
+| `python scripts/validate_writing_benchmark.py` | Passed | Writing benchmark validation still passed after Goal 6 changes |
+| `python scripts/validate_figure_v2.py` | Passed | Figure v2 validation still passed after Goal 6 changes |
+| `python scripts/validate_figure_templates.py` | Passed | Figure template validation still passed after Goal 6 changes |
+| `python scripts/check_style_coverage.py` | Passed | Style coverage still passed after Goal 6 changes |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict Harness validation passed after Goal 6 changes |
+| `npm pack --dry-run` | Passed | Tarball excludes internal `docs/superpowers/**` and includes required distribution files |
+| `git diff --check` | Passed | No whitespace errors after Goal 6 changes |

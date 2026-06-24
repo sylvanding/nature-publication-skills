@@ -19,6 +19,7 @@ REQUIRED_COMMANDS = [
     "python scripts/validate_figure_v2.py",
     "python scripts/validate_figure_templates.py",
     "python scripts/validate_writing_benchmark.py",
+    "python scripts/validate_distribution.py",
     "python scripts/build_pdf_figure_inventory.py",
     "python scripts/make_pdf_contact_sheets.py",
     "python scripts/analyze_pdf_palette.py",
