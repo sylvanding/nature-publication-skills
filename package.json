@@ -9,7 +9,9 @@
   "files": [
     ".codex-plugin",
     "bin",
-    "docs",
+    "docs/installation.md",
+    "docs/distribution.md",
+    "docs/planning",
     "references",
     "scripts",
     "skills",

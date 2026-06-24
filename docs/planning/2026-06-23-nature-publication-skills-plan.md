@@ -4,14 +4,15 @@
 
 ## 目标
 
-基于 `references-papers-dai-tsinghua/` 中 8 组 Nature-family 论文和补充材料，开发可供 agent 使用的中文 skills，覆盖论文文字写作风格和图表绘制风格。正式图表和示例图内文字必须使用英文，避免中文乱码。
+基于 `references-papers-dai-tsinghua/` 中 8 组 Nature-family 论文和补充材料，开发可供 agent 使用的中文 skills，覆盖论文文字写作风格、图表绘制风格和投稿前 submission QA。正式图表和示例图内文字必须使用英文，避免中文乱码。
 
 ## 规划
 
-采用“两个核心 skill + 共享证据层 + 校验脚本”的结构：
+采用“三个核心 skill + 共享证据层 + 校验脚本”的结构：
 
 - `skills/nature-publication-writing/`：论文写作、图例、补充材料文字。
 - `skills/nature-publication-figure/`：多面板图、显微图像板、统计图、流程图、空间组学图、导出和 QA。
+- `skills/nature-publication-submission-qa/`：投稿前 readiness QA、图像完整性、统计报告、数据/代码可用性、Extended Data 与 Supplementary consistency。
 - `references/`：本地论文索引、figure audit register、外部来源。
 - `scripts/`：技能结构校验、PDF 图号 inventory、contact sheet、palette 分析。
 
@@ -33,6 +34,9 @@
 
 ```bash
 python scripts/validate_skills.py
+python scripts/validate_submission_qa.py
+python scripts/validate_docs_productization.py
+python scripts/validate_distribution.py
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
 python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets
 python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json

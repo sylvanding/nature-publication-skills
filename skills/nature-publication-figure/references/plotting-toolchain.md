@@ -14,6 +14,17 @@
 
 MATLAB 可用于读取实验室遗留 `.mat` 数据和复现实验室算法，但不作为默认最终组版工具。R/ggplot2 可用于单纯统计图，但对暗底显微图像板、多图像 montage 和 PDF 审计不如 Python 一体化。
 
+## Nature尺寸和可编辑输出
+
+Nature-family 尺寸口径有两类来源：Nature formatting guide 常用约 90 mm / 180 mm；Nature Research Figure Guide 的最终 artwork 口径常用 89 mm / 183 mm。投稿前按目标期刊最新页面确认；默认脚本可用 89 mm 和 183 mm 作为最终 artwork preset。
+
+导出约束：
+
+- main figures 优先保留 editable text 和 editable vector paths。
+- 最终文字通常控制在 5-7 pt；草图或审稿预览可临时放大，但最终导出要回到目标尺寸。
+- `pdf.fonttype=42` 和 `ps.fonttype=42` 保留 TrueType 字体；SVG 使用 text 而不是 path。
+- 位图 panel 保持 RGB，并在 sidecar 记录 DPI、pixel size、normalization 和 crop。
+
 ## Python 基础模板
 
 ```python
@@ -59,8 +70,9 @@ def mm_to_inch(value):
 
 ## 多面板建议
 
-- 单栏：`figsize=(mm_to_inch(90), mm_to_inch(70-120))`
-- 双栏：`figsize=(mm_to_inch(180), mm_to_inch(90-170))`
+- 单栏：`figsize=(mm_to_inch(89), mm_to_inch(70-120))`
+- 双栏：`figsize=(mm_to_inch(183), mm_to_inch(90-170))`
+- 如果目标期刊页面仍写 90 mm / 180 mm，则用期刊当前要求覆盖默认值。
 - `GridSpec` 优先于手工坐标；需要 hero panel 时用不等宽/不等高 grid。
 - 暗底显微图 panel 关闭 axis，但保留 scale bar 和英文短标签。
 - 统计图保留 axis 和单位，减少 tick 数量。

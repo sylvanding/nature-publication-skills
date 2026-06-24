@@ -1,6 +1,8 @@
 # Installation And Update
 
-本仓库现在按“一个源码仓库，多目标安装”的方式组织。`skills/` 是唯一源码，安装脚本把完整 skill 目录同步或软链接到各 agent 的发现路径。
+本仓库现在按“一个源码仓库，多目标安装”的方式组织。`skills/` 是唯一源码，安装脚本把完整 skill 目录同步或软链接到各 agent 的发现路径。发布、打包和 release 检查见 `docs/distribution.md`。
+
+当前安装会包含三个 skills：`nature-publication-writing`、`nature-publication-figure`、`nature-publication-submission-qa`。如只需其中一个，可使用 `--skill <skill-name>`。
 
 ## 推荐方式
 
@@ -41,7 +43,7 @@ Claude Code 常用 `~/.claude/skills/` 或项目 `.claude/skills/`。
 本仓库包含 `package.json` 和 `bin/nature-publication-skills.mjs`。从 GitHub 使用时可运行：
 
 ```bash
-npx github:sylvanding/nature-publication-skills install --agent codex --scope user --mode symlink
+npx github:sylvanding/nature-publication-skills install --agent codex --scope user --mode copy --force
 npx github:sylvanding/nature-publication-skills update --agent codex --scope user --mode copy --force
 ```
 
@@ -49,7 +51,7 @@ npx github:sylvanding/nature-publication-skills update --agent codex --scope use
 
 ## GitHub CLI `gh skill`
 
-GitHub CLI v2.90.0+ 支持 `gh skill install` / `gh skill update`。当前本机 `gh` 版本较旧，本仓库无法本地验证该命令，但仓库结构遵循 open Agent Skills 标准：每个 skill 是一个带 `SKILL.md` 的完整目录。
+GitHub CLI v2.90.0+ 支持 `gh skill install` / `gh skill update`。该命令仍是 public preview，行为可能变化；安装前应先 inspect skill 内容。当前本机 `gh` 版本较旧，本仓库无法本地验证该命令，但仓库结构遵循 open Agent Skills 标准：每个 skill 是一个带 `SKILL.md` 的完整目录。
 
 ```bash
 gh skill install sylvanding/nature-publication-skills

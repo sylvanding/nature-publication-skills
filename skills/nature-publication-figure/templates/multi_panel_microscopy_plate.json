@@ -1,0 +1,35 @@
+{
+  "template": "multi_panel_microscopy_plate",
+  "purpose": "Dark-background microscopy evidence plate with paired prediction/reference/error panels and a compact quantitative companion.",
+  "mock_only_default": true,
+  "required_inputs": [
+    "image paths or arrays",
+    "crop boxes or slice indices",
+    "pixel size",
+    "scale bar length",
+    "normalization range",
+    "channel mapping"
+  ],
+  "panel_map": {
+    "a": "Raw",
+    "b": "Prediction",
+    "c": "Ground truth",
+    "d": "Error",
+    "e": "Line profile",
+    "f": "Metric summary"
+  },
+  "outputs": ["pdf", "png", "provenance.json"],
+  "provenance_fields": [
+    "template",
+    "mock_only",
+    "source_files",
+    "panel_map",
+    "pixel_size_um",
+    "scale_bar_um",
+    "normalization",
+    "software",
+    "outputs",
+    "palette_tokens",
+    "text_labels"
+  ]
+}

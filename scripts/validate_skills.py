@@ -16,6 +16,12 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 CJK_RE = re.compile(r"[\u3400-\u9fff]")
 REQUIRED_COMMANDS = [
     "python scripts/validate_skills.py",
+    "python scripts/validate_figure_v2.py",
+    "python scripts/validate_figure_templates.py",
+    "python scripts/validate_writing_benchmark.py",
+    "python scripts/validate_submission_qa.py",
+    "python scripts/validate_docs_productization.py",
+    "python scripts/validate_distribution.py",
     "python scripts/build_pdf_figure_inventory.py",
     "python scripts/make_pdf_contact_sheets.py",
     "python scripts/analyze_pdf_palette.py",
@@ -150,7 +156,7 @@ def validate_repository(root: Path) -> list[str]:
     if not installer.exists():
         errors.append("missing scripts/install_skills.py")
     repo_skills = root / ".agents" / "skills"
-    for skill in ("nature-publication-writing", "nature-publication-figure"):
+    for skill in ("nature-publication-writing", "nature-publication-figure", "nature-publication-submission-qa"):
         link = repo_skills / skill
         if not link.exists():
             errors.append(f"missing repo-scoped skill link: {link}")

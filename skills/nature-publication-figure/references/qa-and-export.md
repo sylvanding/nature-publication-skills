@@ -8,12 +8,27 @@
 - 字体优先 Arial/Helvetica；最终图内字体通常约 6-8 pt，不要小到缩版后不可读。
 - 单栏宽约 90 mm，双栏宽约 180 mm，最大深度约 170 mm。
 
+## Main figures vs Extended Data
+
+- main figures 优先提交 editable vector 或 editable layered artwork；统计图、示意图和文字应保持可编辑。
+- 含图像的 main figures 需要同时保留源图像、脚本和高分辨率预览，不能只保留扁平化截图。
+- Extended Data 也必须遵守 image integrity、字体、RGB、scale bar 和可访问性要求；不同 Nature-family 期刊对 Extended Data 文件大小、DPI 和格式可能不同，投稿前重新核验目标页面。
+- Figure legends 和 Extended Data legends 都要引用 panel label，并定义 scale bars、n、error bars 和统计检验。
+
 ## 图像完整性
 
 - 保留原始数据和处理脚本。
 - 亮度/对比度调整应全图一致；局部增强、局部擦除、选择性模糊都需要避免。
 - Methods 中记录图像采集和处理软件；图例或 Methods 中说明 deconvolution、projection、thresholding、filtering、gamma 等关键处理。
 - 所有 crop、scale bar、channel mapping、normalization 范围要可复现。
+- generative AI 不得用于生成、填补、重绘或美化科学图像证据；Springer Nature guidance 一般不允许 generative AI images or figures，有限例外也必须清楚标注并由作者负责。非生成式 ML 图像处理也需要在 caption 或 Methods 中披露。
+
+## Editable vector checklist
+
+- PDF/SVG 中文字保持 editable text，而不是全部转曲。
+- 线条、箭头、scale bar、legend boxes 和统计图形状保持 editable vector。
+- 位图只用于真实图像 panel；不要把整张 figure rasterize 后当作最终矢量文件。
+- RGB mode、DPI、font、panel label 和 scale bar 在导出后重新打开检查。
 
 ## 视觉 QA 清单
 
