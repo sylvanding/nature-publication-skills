@@ -60,6 +60,17 @@
 | 不确定性或置信度 | confidence map + calibration/coverage plot | 只给平均误差 |
 | 分布差异 | histogram/density + summary statistic | 只给均值 |
 
+## Nature Research Figure Guide checks
+
+官方图形可访问性规则优先于本地风格观察。Nature Research Figure Guide 和 Springer Nature accessibility guidance 支持以下硬约束：
+
+- 避免把 red and green 作为唯一对比；按 colour blindness 模拟后仍需可区分。
+- 避免 colored text 作为 legend 或 label 的主要编码；使用色块 + 黑色文字，或直接标注。
+- 避免 overlapping labels、密集小字和遮挡数据的注释；先减少标签或改用分面。
+- 避免用 patterns/hatching 区分类别，尤其是 pie chart；优先 solid colours 或直接标签。
+- 连续量使用 perceptually uniform colormap；不要用 rainbow/jet。
+- 颜色不应承担唯一语义通道；关键分组可同时用位置、分面、线型或直接标签。
+
 ## Panel 组合
 
 - Figure 1：通常承担方法总览。优先 `schematic -> representative data -> key quantitative promise`。

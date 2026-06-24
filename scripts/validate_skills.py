@@ -16,6 +16,7 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 CJK_RE = re.compile(r"[\u3400-\u9fff]")
 REQUIRED_COMMANDS = [
     "python scripts/validate_skills.py",
+    "python scripts/validate_figure_v2.py",
     "python scripts/build_pdf_figure_inventory.py",
     "python scripts/make_pdf_contact_sheets.py",
     "python scripts/analyze_pdf_palette.py",

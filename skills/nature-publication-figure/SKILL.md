@@ -12,8 +12,10 @@ description: Nature-family scientific figure design and QA. Use when creating, r
 1. 先写一行图表契约：`claim -> evidence -> figure type -> target journal -> output files`。
 2. 读取需要的 reference，而不是凭记忆作图：
    - 图表风格与论文证据：`references/figure-style-atlas.md`
+   - panel composition、hero panel 和图标/示意图风格：`references/panel-composition-patterns.md`
    - 配色、图型和英文标签规则：`references/color-and-chart-rules.md`
    - 绘图工具选择与代码模板：`references/plotting-toolchain.md`
+   - 可复用模板目录和输入/输出契约：`references/figure-template-catalog.md`
    - 导出、图像完整性和 QA：`references/qa-and-export.md`
 3. 若用户没有给数据或图像，先要求真实数据/图像或明确写出 mock-only；不得伪造结果。
 

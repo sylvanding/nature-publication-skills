@@ -26,7 +26,7 @@ Planned additions and modifications:
 - Modify `references/external-sources.md`: refresh checked dates and add current source evidence from web verification.
 - Modify `skills/nature-publication-figure/SKILL.md`: only route to new references/templates; keep core instructions short.
 - Modify or create `skills/nature-publication-figure/references/panel-composition-patterns.md`: panel layout, hero panel, microscopy plates, statistical blocks, icons/schematics.
-- Modify or create `skills/nature-publication-figure/references/template-catalog.md`: available templates, when to use each, input expectations, outputs.
+- Modify or create `skills/nature-publication-figure/references/figure-template-catalog.md`: available templates, when to use each, input expectations, outputs.
 - Create `skills/nature-publication-figure/scripts/`: deterministic figure helpers installed with the figure skill.
 - Create `skills/nature-publication-figure/templates/`: reusable Python figure template entrypoints installed with the figure skill.
 - Create `skills/nature-publication-figure/assets/palettes.json`: palette tokens and channel mappings that travel with the installed skill.
@@ -89,12 +89,12 @@ Expected: both exit 0.
 **Files:**
 - Modify: `skills/nature-publication-figure/SKILL.md`
 - Modify/create: `skills/nature-publication-figure/references/panel-composition-patterns.md`
-- Modify/create: `skills/nature-publication-figure/references/template-catalog.md`
+- Modify/create: `skills/nature-publication-figure/references/figure-template-catalog.md`
 - Modify/create: `skills/nature-publication-figure/references/color-and-chart-rules.md`
 - Modify/create: `skills/nature-publication-figure/references/plotting-toolchain.md`
 - Test: `tests/benchmarks/figure/*`
 
-- [ ] **Step 1: RED pressure scenarios**
+- [x] **Step 1: RED pressure scenarios**
 
 Create figure skill pressure scenarios that fail current guidance when an agent is asked to choose panel layout, colors, microscopy channel mapping, statistical plot type, and export QA under sparse input.
 
@@ -106,7 +106,7 @@ Expected baseline failure categories:
 - no source mapping to paper evidence
 - Chinese or ambiguous figure labels inside examples
 
-- [ ] **Step 2: Add minimal v2 references**
+- [x] **Step 2: Add minimal v2 references**
 
 Patch references to include:
 
@@ -117,20 +117,21 @@ Patch references to include:
 - schematic/icon style rules
 - export and QA contract
 
-- [ ] **Step 3: Route from `SKILL.md`**
+- [x] **Step 3: Route from `SKILL.md`**
 
 Add concise reference routing only; do not paste all details into `SKILL.md`.
 
-- [ ] **Step 4: GREEN validation**
+- [x] **Step 4: GREEN validation**
 
 Run:
 
 ```bash
 python scripts/validate_skills.py
+python scripts/validate_figure_v2.py
 python scripts/check_style_coverage.py
 ```
 
-Expected: both exit 0 and pressure scenario rubric shows the new references answer the failure categories.
+Expected: all exit 0 and pressure scenario rubric shows the new references answer the failure categories.
 
 ## Task 3: Paper Evidence Coverage Re-Audit
 
@@ -182,7 +183,7 @@ Expected: both exit 0.
 - Create: `skills/nature-publication-figure/scripts/`
 - Create: `skills/nature-publication-figure/templates/`
 - Create: `skills/nature-publication-figure/assets/`
-- Modify: `skills/nature-publication-figure/references/template-catalog.md`
+- Modify: `skills/nature-publication-figure/references/figure-template-catalog.md`
 - Test: `tests/benchmarks/figure/`
 
 - [ ] **Step 1: Define template set**
