@@ -24,10 +24,10 @@ Current: Verify
 ## Heartbeat
 
 Mode: wf
-Last beat: 2026-06-24T23:05:00+08:00
+Last beat: 2026-06-24T23:34:00+08:00
 Current phase: Verify
 Current blocker: none
-Next beat trigger: after Goal 2 commit and before Goal 3 evidence coverage audit
+Next beat trigger: after Goal 3 commit and before Goal 4 template-library build
 Failure count: 0
 Recovery action: narrow to the next unfinished roadmap slice, rerun the relevant validator, and dispatch debugger only for reproduced failures
 
@@ -51,7 +51,7 @@ Allowed task statuses: Pending / In Progress / Blocked / Done / Verified.
 
 - [x] Goal 1: Harness bootstrap closeout audit proves branch, commit, push, `Harness/PLAN.md`, and `Harness/SETUP.md` disposition are consistent.
 - [x] Goal 2: Figure skill v2 adds source-backed, executable guidance for colors, panel layouts, microscopy plates, statistical plots, workflows, icon/schematic styles, and export QA without bloating `SKILL.md`.
-- [ ] Goal 3: Evidence coverage maps every local main, Extended Data, Supplementary figure/table family to skill rules and sources.
+- [x] Goal 3: Evidence coverage maps every local main, Extended Data, Supplementary figure/table family to skill rules and sources.
 - [ ] Goal 4: Template library provides runnable Nature-style figure examples or scripts with English labels and deterministic validation.
 - [ ] Goal 5: Writing benchmark provides prompts, expected checks, and a runner or manual rubric for title, abstract, results, legends, methods, and discussion.
 - [ ] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
@@ -131,7 +131,7 @@ Keep this list short. Add only docs/files used for the current phase.
 | 3 | Write detailed eight-goal roadmap and acceptance matrix | main | `docs/superpowers/plans/2026-06-24-wf-eight-goals.md` exists and has no placeholders | Done |
 | 4 | Goal 1: Harness bootstrap closeout audit | main plus reviewer/verifier | strict Harness validator, status/log/push evidence | Verified |
 | 5 | Goal 2: Nature figure skill v2 | main plus test-writer/reviewer | skill validator, style coverage, figure template/QA checks | Verified |
-| 6 | Goal 3: Paper evidence coverage re-audit | main plus researcher | PDF audit scripts and coverage table validator | Pending |
+| 6 | Goal 3: Paper evidence coverage re-audit | main plus researcher | PDF audit scripts and coverage table validator | Verified |
 | 7 | Goal 4: Nature chart/template library | main plus implementer/reviewer | generated sample outputs and template validator | Pending |
 | 8 | Goal 5: Writing skill benchmark | main plus test-writer | benchmark runner or rubric validator | Pending |
 | 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Pending |
@@ -156,7 +156,7 @@ Findings accepted: complete the roadmap as ordered slices with commit boundaries
 Findings rejected: putting reusable figure templates only in root docs or root scripts was rejected because installed skills would not carry their tools; treating third-party blogs as policy sources was rejected.
 Conflicts: none
 Decisions: Use progressive disclosure; keep `SKILL.md` files concise; implement the roadmap as ordered slices with verification after each slice; retire `Harness/SETUP.md` after Goal 1 because bootstrap is verified and normal WF mode is active.
-Next write set: Goal 3 evidence coverage audit: `references/figure-style-rule-map.md`, `references/figure-audit-register.md` if needed, `scripts/check_style_coverage.py`, and related Harness feature records.
+Next write set: Goal 4 chart/template library: `skills/nature-publication-figure/scripts/**`, `skills/nature-publication-figure/templates/**`, `skills/nature-publication-figure/assets/**`, template validator scripts, and related feature records.
 Verification path: baseline validators, slice-specific validators, final full verification matrix
 Residual risk: the full objective is large; the goal remains active until all eight items are verified. `npm pack --dry-run` currently includes `docs/superpowers/plans/**` because `package.json` packages all `docs/**`; revisit during Goal 6 distribution polish.
 
@@ -170,6 +170,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | Fermat | Reviewer | Goal 1 diff, no writes | Found stale Task 1 roadmap checkboxes and missing negative tests; both addressed |
 | Peirce | Reviewer | Goal 2 spec compliance diff, no writes | Found missing pressure scenarios/rubric, shallow validator coverage, and stale feature verification records; all addressed |
 | Confucius | Reviewer | Goal 2 source/quality diff, no writes | Found copy-mode evidence gap, unsupported hero-panel range, shallow path validation, stale source date discipline, and old roadmap path; all addressed |
+| Leibniz | Reviewer | Goal 3 coverage diff and regenerated `.audit/**` evidence, no writes | Found no blocking coverage issues; requested status closeout sync, now addressed |
 
 ## Decisions
 
@@ -181,6 +182,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | 2026-06-24 | Keep `SKILL.md` concise and place detailed figure/writing/QA material in references, scripts, or assets | OpenAI Codex Skills docs and Agent Skills spec emphasize progressive disclosure and optional resources |
 | 2026-06-24 | Retire `Harness/SETUP.md` and update the validator to support post-bootstrap mode | Bootstrap is verified, `Harness/SETUP.md` is temporary, and future WF tasks should not re-enter setup |
 | 2026-06-24 | Plan item 7 as a third `nature-publication-submission-qa` skill | Submission readiness crosses manuscript text, figures, Extended Data, Supplementary Information, accessibility, image integrity, reporting, and final files |
+| 2026-06-24 | Add `references/figure-style-rule-map.md` as the crosswalk from local figures to figure skill rules | Goal 3 needs durable evidence that every local figure/table family is tied to source paths and reusable style rules |
 
 ## Verification
 
@@ -202,3 +204,11 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | `python scripts/check_style_coverage.py` | Passed | Style coverage passed after Goal 2 changes |
 | `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict Harness validation passed after Goal 2 feature record updates |
 | `git diff --check` | Passed | No whitespace errors after Goal 2 changes |
+| `python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json` | Passed | Goal 3 regenerated 15 PDF inventory records |
+| `python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets` | Passed | Goal 3 regenerated 15 contact sheets under ignored `.audit/` |
+| `python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json` | Passed | Goal 3 regenerated palette summaries for 15 PDFs |
+| `python scripts/check_style_coverage.py` | Passed | Goal 3 rule map and strengthened style coverage validator passed |
+| `python scripts/validate_skills.py` | Passed | Skill validation passed after Goal 3 changes |
+| `python scripts/validate_figure_v2.py` | Passed | Figure v2 validation still passed after Goal 3 changes |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Strict Harness validation passed after Goal 3 feature record updates |
+| `git diff --check` | Passed | No whitespace errors after Goal 3 changes |

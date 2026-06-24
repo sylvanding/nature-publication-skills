@@ -140,7 +140,7 @@ Expected: all exit 0 and pressure scenario rubric shows the new references answe
 - Modify: `references/figure-audit-register.md`
 - Modify: `scripts/check_style_coverage.py`
 
-- [ ] **Step 1: Regenerate audit artifacts when local PDFs exist**
+- [x] **Step 1: Regenerate audit artifacts when local PDFs exist**
 
 Run:
 
@@ -152,7 +152,7 @@ python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .a
 
 Expected: 15 PDFs processed, outputs remain ignored.
 
-- [ ] **Step 2: Build rule map**
+- [x] **Step 2: Build rule map**
 
 Map each paper group to:
 
@@ -162,11 +162,11 @@ Map each paper group to:
 - style rules used by the figure skill
 - gaps needing manual PDF inspection
 
-- [ ] **Step 3: Add automated coverage check**
+- [x] **Step 3: Add automated coverage check**
 
 Extend `scripts/check_style_coverage.py` so it checks that `references/figure-style-rule-map.md` mentions all eight groups and core style families.
 
-- [ ] **Step 4: Verify**
+- [x] **Step 4: Verify**
 
 Run:
 

@@ -1,6 +1,6 @@
 # Figure Audit Register
 
-审计日期：2026-06-23。审计方法：使用 PyMuPDF/PIL 对全部 PDF 逐页渲染 contact sheet，并结合文本层图号匹配核对主文图、Extended Data、Supplementary figures 和 tables。可用以下命令复现：
+审计日期：2026-06-23；覆盖映射复核：2026-06-24。审计方法：使用 PyMuPDF/PIL 对全部 PDF 逐页渲染 contact sheet，并结合文本层图号匹配核对主文图、Extended Data、Supplementary figures 和 tables。2026-06-24 复跑 15 个 PDF records、15 张 contact sheets 和 15 组 palette summaries，并将图表家族映射到 `references/figure-style-rule-map.md`。可用以下命令复现：
 
 ```bash
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
