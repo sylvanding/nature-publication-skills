@@ -358,11 +358,11 @@ If a new skill is added, also verify plugin metadata and install smoke.
 - Consider create: `docs/release-checklist.md`
 - Consider create: `docs/benchmarking.md`
 
-- [ ] **Step 1: Preserve existing facts**
+- [x] **Step 1: Preserve existing facts**
 
 Do not remove existing skills, evidence, install, or validation sections. Reorganize only if clarity improves and commands remain intact.
 
-- [ ] **Step 2: Add quickstart and decision tables**
+- [x] **Step 2: Add quickstart and decision tables**
 
 Include:
 
@@ -372,7 +372,7 @@ Include:
 - validation command matrix
 - contribution/update workflow
 
-- [ ] **Step 3: Add roadmap completion summary**
+- [x] **Step 3: Add roadmap completion summary**
 
 Link to:
 
@@ -382,12 +382,13 @@ Link to:
 - submission QA workflow
 - release checklist
 
-- [ ] **Step 4: Final verification**
+- [x] **Step 4: Final verification**
 
 Run full matrix:
 
 ```bash
 node Harness/scripts/validate-harness.mjs --strict
+python scripts/validate_docs_productization.py
 python scripts/validate_skills.py
 python scripts/check_style_coverage.py
 python scripts/install_skills.py install --agent codex --scope repo --repo .audit/install-smoke --mode symlink --dry-run

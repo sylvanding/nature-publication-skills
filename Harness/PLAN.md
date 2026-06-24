@@ -24,10 +24,10 @@ Current: Verify
 ## Heartbeat
 
 Mode: wf
-Last beat: 2026-06-24T23:38:00+08:00
+Last beat: 2026-06-24T23:50:00+08:00
 Current phase: Verify
 Current blocker: none
-Next beat trigger: after Goal 7 commit and before Goal 8 docs productization
+Next beat trigger: final eight-goal completion audit
 Failure count: 0
 Recovery action: narrow to the next unfinished roadmap slice, rerun the relevant validator, and dispatch debugger only for reproduced failures
 
@@ -56,9 +56,9 @@ Allowed task statuses: Pending / In Progress / Blocked / Done / Verified.
 - [x] Goal 5: Writing benchmark provides prompts, expected checks, and a runner or manual rubric for title, abstract, results, legends, methods, and discussion.
 - [x] Goal 6: Install/distribution docs and validation cover Codex, Claude Code, npm/npx, plugin packaging, GitHub CLI skill flow, release checklist, and update safety.
 - [x] Goal 7: Submission QA skill exists or the existing skills gain a clearly routed QA workflow covering figure legends, statistics, image integrity, reporting, data/code availability, and supplementary consistency.
-- [ ] Goal 8: README/docs are productized while preserving current project facts and validation commands.
-- [ ] All new claims have local or web source evidence recorded in `references/**`, skill references, or `Harness/research/research-results.md`.
-- [ ] Final validators pass: `node Harness/scripts/validate-harness.mjs --strict`, `python scripts/validate_skills.py`, `python scripts/check_style_coverage.py`, benchmark/template validators, install smoke checks, PDF audit checks when local corpus is present, `npm pack --dry-run`, and `git diff --check`.
+- [x] Goal 8: README/docs are productized while preserving current project facts and validation commands.
+- [x] All new claims have local or web source evidence recorded in `references/**`, skill references, or `Harness/research/research-results.md`.
+- [x] Final validators pass: `node Harness/scripts/validate-harness.mjs --strict`, `python scripts/validate_skills.py`, `python scripts/check_style_coverage.py`, benchmark/template validators, install smoke checks, PDF audit checks when local corpus is present, `npm pack --dry-run`, and `git diff --check`.
 
 ## Scope
 
@@ -112,6 +112,7 @@ Keep this list short. Add only docs/files used for the current phase.
 - `references/external-sources.md`
 - `scripts/validate_skills.py`
 - `scripts/validate_submission_qa.py`
+- `scripts/validate_docs_productization.py`
 - `scripts/check_style_coverage.py`
 - OpenAI Codex Skills docs, Agent Skills specification, GitHub CLI `gh skill`, Nature formatting guide, Nature final submission, Nature research figure guide, Nature Portfolio reporting standards, Nature Portfolio image integrity, Springer Nature accessibility, Springer Nature AI guidance
 
@@ -139,8 +140,8 @@ Keep this list short. Add only docs/files used for the current phase.
 | 8 | Goal 5: Writing skill benchmark | main plus test-writer | benchmark runner or rubric validator | Verified |
 | 9 | Goal 6: Install/distribution polish | main plus docs-researcher | install smoke, npm pack, docs link checks | Verified |
 | 10 | Goal 7: Nature submission QA skill | main plus architect/reviewer | skill validator and QA pressure scenarios | Verified |
-| 11 | Goal 8: README/docs productization | main plus reviewer | README checklist, link validation, final smoke | Pending |
-| 12 | Final review, verification, commit/push | main plus verifier | full command matrix, `git diff --check`, pushed branch | Pending |
+| 11 | Goal 8: README/docs productization | main plus reviewer | README checklist, link validation, final smoke | Verified |
+| 12 | Final review, verification, commit/push | main plus verifier | full command matrix, `git diff --check`, pushed branch | In Progress |
 
 ## Parallel Dispatch
 
@@ -178,6 +179,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | James | Reviewer | Goal 5 writing benchmark diff, no writes | Found broken benchmark routing, roadmap drift, ambiguous rubric applicability, and stale closeout; all addressed |
 | Socrates | Reviewer | Goal 6 install/distribution diff and package dry-run, no writes | Found npx symlink risk, missing `gh skill` preview warning, dry-run-only install smoke, incomplete package assertions, and stale closeout; all addressed |
 | Archimedes | Pressure reviewer | Goal 7 mock submission package audit without QA skill, no writes | Confirmed likely misses around figure legends, statistics, scale bars/raw images, reporting summary, data/code availability, supplementary consistency, and final file readiness; current QA skill covers the hard gates |
+| Ramanujan | Final docs reviewer | Goal 8 README/docs productization diff, no writes | Found package-facing Harness command ambiguity, incomplete release block, and stale planning goal; all addressed |
 
 ## Decisions
 
@@ -194,6 +196,7 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | 2026-06-24 | Keep writing benchmarks inside the writing skill folder | Copy-mode installs only carry the skill directory, so benchmark prompts and rubric must be skill-contained |
 | 2026-06-24 | Exclude internal `docs/superpowers/**` from npm packages | Distribution packages should ship user-facing docs and skills, not Harness execution plans |
 | 2026-06-24 | Implement submission readiness as a third installed skill | The workflow crosses writing, figures, image integrity, reporting standards, data/code availability, AI use, Extended Data, and Supplementary Information |
+| 2026-06-24 | Add a docs productization validator before rewriting README | README and packaged docs should be held to a repeatable product checklist rather than subjective polish |
 
 ## Verification
 
@@ -258,4 +261,16 @@ Residual risk: the full objective is large; the goal remains active until all ei
 | `python scripts/check_style_coverage.py` | Passed | Output: `Style coverage check passed.` |
 | `node Harness/scripts/validate-harness.mjs --strict` | Passed | Output: `Harness validation passed (strict).` |
 | `npm pack --dry-run` | Passed | Tarball dry-run includes `skills/nature-publication-submission-qa/**` and `scripts/validate_submission_qa.py` |
+| `git diff --check` | Passed | Exit 0 with no whitespace findings |
+| `python scripts/validate_docs_productization.py` | Failed as RED | Missing README quickstart, skill chooser, install-mode decision table, evidence/provenance, validation matrix, roadmap summary, update/release workflow, and docs routes |
+| `python scripts/validate_docs_productization.py` | Passed | Output: `Docs productization validation passed.` |
+| `python scripts/validate_skills.py` | Passed | Output: `Validation passed.` |
+| `python scripts/validate_submission_qa.py` | Passed | Output: `Submission QA validation passed.` |
+| `python scripts/validate_writing_benchmark.py` | Passed | Output: `Writing benchmark validation passed.` |
+| `python scripts/validate_figure_v2.py` | Passed | Output: `Figure v2 validation passed.` |
+| `python scripts/validate_figure_templates.py` | Passed | Output: `Figure template validation passed.` |
+| `python scripts/check_style_coverage.py` | Passed | Output: `Style coverage check passed.` |
+| `python scripts/validate_distribution.py` | Passed | Output: `Distribution validation passed.` |
+| `node Harness/scripts/validate-harness.mjs --strict` | Passed | Output: `Harness validation passed (strict).` |
+| `npm pack --dry-run` | Passed | Tarball dry-run includes productized README, docs planning, and `scripts/validate_docs_productization.py` |
 | `git diff --check` | Passed | Exit 0 with no whitespace findings |

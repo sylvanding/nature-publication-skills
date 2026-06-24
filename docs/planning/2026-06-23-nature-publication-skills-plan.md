@@ -4,7 +4,7 @@
 
 ## 目标
 
-基于 `references-papers-dai-tsinghua/` 中 8 组 Nature-family 论文和补充材料，开发可供 agent 使用的中文 skills，覆盖论文文字写作风格和图表绘制风格。正式图表和示例图内文字必须使用英文，避免中文乱码。
+基于 `references-papers-dai-tsinghua/` 中 8 组 Nature-family 论文和补充材料，开发可供 agent 使用的中文 skills，覆盖论文文字写作风格、图表绘制风格和投稿前 submission QA。正式图表和示例图内文字必须使用英文，避免中文乱码。
 
 ## 规划
 
@@ -34,6 +34,9 @@
 
 ```bash
 python scripts/validate_skills.py
+python scripts/validate_submission_qa.py
+python scripts/validate_docs_productization.py
+python scripts/validate_distribution.py
 python scripts/build_pdf_figure_inventory.py references-papers-dai-tsinghua --output .audit/pdf_figure_inventory.json
 python scripts/make_pdf_contact_sheets.py references-papers-dai-tsinghua --output-dir .audit/pdf-page-sheets
 python scripts/analyze_pdf_palette.py references-papers-dai-tsinghua --output .audit/pdf_palette_summary.json

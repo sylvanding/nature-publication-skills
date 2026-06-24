@@ -2,6 +2,8 @@
 
 本仓库现在按“一个源码仓库，多目标安装”的方式组织。`skills/` 是唯一源码，安装脚本把完整 skill 目录同步或软链接到各 agent 的发现路径。发布、打包和 release 检查见 `docs/distribution.md`。
 
+当前安装会包含三个 skills：`nature-publication-writing`、`nature-publication-figure`、`nature-publication-submission-qa`。如只需其中一个，可使用 `--skill <skill-name>`。
+
 ## 推荐方式
 
 ### Codex 用户级安装

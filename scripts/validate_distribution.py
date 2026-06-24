@@ -38,6 +38,7 @@ REQUIRED_PACKAGE_FILES = [
     "skills/nature-publication-submission-qa/references/data-code-reporting.md",
     "skills/nature-publication-submission-qa/references/supplementary-consistency.md",
     "scripts/validate_distribution.py",
+    "scripts/validate_docs_productization.py",
 ]
 FORBIDDEN_PACKAGE_PREFIXES = [
     "docs/superpowers/",
